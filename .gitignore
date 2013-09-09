@@ -22,3 +22,7 @@ DerivedData
 *.pbxproj
 
 *.xcuserstate
+
+*.xcuserstate
+
+*.xcbkptlist
