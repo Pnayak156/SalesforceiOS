@@ -50,6 +50,7 @@
 		8273F18A1778F39F005E31A6 /* libSalesforceCommonUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8273F1881778F39F005E31A6 /* libSalesforceCommonUtils.a */; };
 		BD08D4AD17DDA2C3008FE15E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD08D4AC17DDA2C3008FE15E /* MainStoryboard_iPhone.storyboard */; };
 		BD08D4AF17DDA2E1008FE15E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD08D4AE17DDA2E1008FE15E /* MainStoryboard_iPad.storyboard */; };
+		BD08D4B217DDA6C9008FE15E /* Model1.0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD08D4B017DDA6C9008FE15E /* Model1.0.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +248,7 @@
 		8273F1881778F39F005E31A6 /* libSalesforceCommonUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSalesforceCommonUtils.a; sourceTree = "<group>"; };
 		BD08D4AC17DDA2C3008FE15E /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		BD08D4AE17DDA2E1008FE15E /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		BD08D4B117DDA6C9008FE15E /* Model1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model1.0.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 				824A9F301725079000C9BD79 /* Dependencies */,
 				824A9E421724EF9800C9BD79 /* Resources */,
 				824A9DDF1724E16400C9BD79 /* Supporting Files */,
+				BD08D4B017DDA6C9008FE15E /* Model1.0.xcdatamodeld */,
 			);
 			path = SalesforceiOSUniversal;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				824A9E361724E45100C9BD79 /* RootViewController.m in Sources */,
 				824A9E3A1724E58200C9BD79 /* InitialViewController.m in Sources */,
+				BD08D4B217DDA6C9008FE15E /* Model1.0.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,6 +957,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BD08D4B017DDA6C9008FE15E /* Model1.0.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BD08D4B117DDA6C9008FE15E /* Model1.0.xcdatamodel */,
+			);
+			currentVersion = BD08D4B117DDA6C9008FE15E /* Model1.0.xcdatamodel */;
+			path = Model1.0.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 824A9DCD1724E16400C9BD79 /* Project object */;
 }
