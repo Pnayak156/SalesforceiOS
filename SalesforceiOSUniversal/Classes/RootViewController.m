@@ -24,9 +24,11 @@
 
 
 #import "RootViewController.h"
+#import "LibraryAPI.h"
 
 #import "SFRestAPI.h"
 #import "SFRestRequest.h"
+#import "Account.h"
 
 @implementation RootViewController
 
@@ -53,38 +55,17 @@
 {
     [super viewDidLoad];
     self.title = @"Mobile SDK Sample App";
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReceived:) name:@"DATA_RECEIVED_NOTIFICATION" object:nil];
     //Here we use a query that should work on either Force.com or Database.com
-    SFRestRequest *request = [[SFRestAPI sharedInstance] requestForQuery:@"SELECT Name FROM User LIMIT 10"];    
-    [[SFRestAPI sharedInstance] send:request delegate:self];
+//    SFRestRequest *request = [[SFRestAPI sharedInstance] requestForQuery:@"SELECT Name FROM User LIMIT 10"];    
+//    [[SFRestAPI sharedInstance] send:request delegate:self];
+    [[LibraryAPI sharedInstane] startSync];
 }
 
-#pragma mark - SFRestAPIDelegate
-
-- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
-    NSArray *records = [jsonResponse objectForKey:@"records"];
-    NSLog(@"request:didLoadResponse: #records: %d", records.count);
-    self.dataRows = records;
+- (void)dataReceived:(NSNotification *)notification{
+   self.dataRows = [[[LibraryAPI sharedInstane] modelObjects] objectForKey:@"Account"];
     [self.tableView reloadData];
 }
-
-
-- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
-    NSLog(@"request:didFailLoadWithError: %@", error);
-    //add your failed error handling here
-}
-
-- (void)requestDidCancelLoad:(SFRestRequest *)request {
-    NSLog(@"requestDidCancelLoad: %@", request);
-    //add your failed error handling here
-}
-
-- (void)requestDidTimeout:(SFRestRequest *)request {
-    NSLog(@"requestDidTimeout: %@", request);
-    //add your failed error handling here
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -110,8 +91,8 @@
 	cell.imageView.image = image;
 
 	// Configure the cell to show the data.
-	NSDictionary *obj = [dataRows objectAtIndex:indexPath.row];
-	cell.textLabel.text =  [obj objectForKey:@"Name"];
+	Account *obj = [dataRows objectAtIndex:indexPath.row];
+	cell.textLabel.text =  obj.name;
 
 	//this adds the arrow to the right hand side.
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -126,12 +126,6 @@ static NSString * const OAuthRedirectURI        = @"mysampleapp://auth/success";
 
 #pragma mark - Private methods
 
-- (void)initializeAppViewState
-{
-    self.window.rootViewController = [[InitialViewController alloc] initWithNibName:nil bundle:nil];
-    [self.window makeKeyAndVisible];
-}
-
 - (void)setupRootViewController
 {
     RootViewController *rootVC = [[RootViewController alloc] initWithNibName:nil bundle:nil];
