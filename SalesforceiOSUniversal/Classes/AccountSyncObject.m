@@ -19,7 +19,7 @@
     return @"Loading Account";
 }
 - (NSDictionary *)propertyMapping{
-    return @{@"idL":@"Id", @"name":@"Name", @"lastModifiedDate":@"LastModifiedDate",
+    return @{@"id":@"Id", @"name":@"Name", @"lastModifiedDate":@"LastModifiedDate",
              @"phone":@"Phone", @"industry":@"Industry", @"accountNumber":@"AccountNumber"};
 }
 - (NSString *)lastModifiedDate{

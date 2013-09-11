@@ -19,7 +19,7 @@
     return @"Loading Contact";
 }
 - (NSDictionary *)propertyMapping{
-    return @{@"idL":@"Id", @"name":@"Name", @"lastModifiedDate":@"LastModifiedDate",
+    return @{@"id":@"Id", @"name":@"Name", @"lastModifiedDate":@"LastModifiedDate",
              @"phone":@"Phone"};
 }
 - (NSString *)lastModifiedDate{

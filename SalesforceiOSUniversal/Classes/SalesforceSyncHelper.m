@@ -271,10 +271,10 @@ static SalesforceSyncHelper *sharedInstance = nil;
 - (void)saveRecordseForSyncObject:(id<SyncObjectDelegate>) syncObject record:(NSArray *)records {
     NSMutableDictionary *propertyMapping = [[syncObject propertyMapping] copy];
     NSString *entityName = [syncObject entityName];
-//    Class class = NSClassFromString(entityName);
+    Class class = NSClassFromString(entityName);
     NSMutableArray *recordArray = [@[] mutableCopy];
     for (NSDictionary *objDict in records) {
-        NSObject *obj;
+        NSObject *obj = [[class alloc] init];
         if ([entityName isEqualToString:@"Account"]) {
             obj = [[Account alloc] init];
         } else if ([entityName isEqualToString:@"Contact"]) {
@@ -282,13 +282,29 @@ static SalesforceSyncHelper *sharedInstance = nil;
         }
         
         for (NSString *key in propertyMapping.allKeys) {
-            __weak NSString *value = [objDict valueForKey:[propertyMapping valueForKey:key]];
+            NSString *value = [objDict valueForKey:[propertyMapping valueForKey:key]];
+//            object_setInstanceVariable(obj, [@"name" UTF8String], value);
+//            NSString *outputValue;
+//            object_getInstanceVariable(obj, [@"name" UTF8String], &outputValue);
+//            NSLog(@"value %@",outputValue);
+//            object_setIvar(obj, class_getInstanceVariable(class,[key UTF8String]), value);
             [obj setValue:value forKey:key];
         }
         if ([syncObject hasParentEntity]) {
             NSMutableDictionary *modelObjs = [[LibraryAPI sharedInstane] modelObjects];
-            NSArray *parentRecords = [modelObjs objectForKey:[syncObject parentEntity]];
-            parentRecords  = [parentRecords filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"idL = %@",[objDict valueForKey:[syncObject sfdcParentFieldName]]]];
+          __block  NSArray *parentRecords = [modelObjs objectForKey:[syncObject parentEntity]];
+//            [parentRecords enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                NSString *outputValue;
+//                object_getInstanceVariable(obj, [@"id" UTF8String], &outputValue);
+//                if ([outputValue isEqualToString:[objDict valueForKey:[syncObject sfdcParentFieldName]]]) {
+//                    parentRecords = @[obj];
+//                }
+//            }];
+            parentRecords  = [parentRecords filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id = %@",[objDict valueForKey:[syncObject sfdcParentFieldName]]]];
+//            NSObject *parentObj = [parentRecords lastObject];
+//            object_setInstanceVariable(obj, [[syncObject parentLacolAttributeName] UTF8String], parentObj);
+//            object_setIvar(obj, class_getInstanceVariable(class,[[syncObject parentLacolAttributeName] UTF8String]), parentObj);
+            
             [obj setValue:[parentRecords lastObject] forKey:[syncObject parentLacolAttributeName]];
         }
         [recordArray addObject:obj];
@@ -300,6 +316,18 @@ static SalesforceSyncHelper *sharedInstance = nil;
     if ([modelObjs objectForKey:[syncObject sobjectName]]) {
         NSMutableArray *oldRecord = [modelObjs objectForKey:[syncObject sobjectName]];
         if (oldRecord.count) {
+//            NSMutableArray *tobeDelete = [@[] mutableCopy];
+//            [oldRecord enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                NSString *outputValue;
+//                object_getInstanceVariable(obj, [@"id" UTF8String], &outputValue);
+//                for (NSObject *objectTemp in recordArray) {
+//                    NSString *newValue;
+//                    object_getInstanceVariable(obj, [@"id" UTF8String], &newValue);
+//                    if ([outputValue isEqualToString:newValue]) {
+//                        [oldRecord addObject:obj];
+//                    }
+//                }
+//            }];
             NSArray *tobeDelete = [oldRecord filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id in (%@)",[recordArray valueForKey:@"id"]]];
             if (tobeDelete.count) {
                 [oldRecord removeObjectsInArray:tobeDelete];
@@ -316,6 +344,7 @@ static SalesforceSyncHelper *sharedInstance = nil;
     }
     [LibraryAPI sharedInstane].modelObjects = modelObjs;
 }
+
 #pragma mark -
 #pragma mark Singleton methods
 

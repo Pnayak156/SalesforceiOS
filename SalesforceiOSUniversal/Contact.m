@@ -12,7 +12,7 @@
 
 @implementation Contact
 
-@synthesize idL;
+@synthesize id;
 @synthesize name;
 @synthesize phone;
 @synthesize lastModifiedDate;

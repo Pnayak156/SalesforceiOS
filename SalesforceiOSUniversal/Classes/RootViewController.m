@@ -29,7 +29,10 @@
 #import "SFRestAPI.h"
 #import "SFRestRequest.h"
 #import "Account.h"
-
+#import "Contact.h"
+@interface RootViewController()
+@property (nonatomic, strong) NSArray *contacts;
+@end
 @implementation RootViewController
 
 @synthesize dataRows;
@@ -55,6 +58,14 @@
 {
     [super viewDidLoad];
     self.title = @"Mobile SDK Sample App";
+//    Class class = NSClassFromString(@"Account");
+//    NSObject *object = [[class alloc] init];
+//    object_setInstanceVariable(object, [@"name" UTF8String], @"yes");
+//    NSString *outputValue;
+//    object_getInstanceVariable(object, [@"name" UTF8String], &outputValue);
+//    Account *acc = (Account *)object;
+//    NSLog(@"value %@",outputValue);
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReceived:) name:@"DATA_RECEIVED_NOTIFICATION" object:nil];
     //Here we use a query that should work on either Force.com or Database.com
 //    SFRestRequest *request = [[SFRestAPI sharedInstance] requestForQuery:@"SELECT Name FROM User LIMIT 10"];    
@@ -64,6 +75,7 @@
 
 - (void)dataReceived:(NSNotification *)notification{
    self.dataRows = [[[LibraryAPI sharedInstane] modelObjects] objectForKey:@"Account"];
+    _contacts = [[[LibraryAPI sharedInstane] modelObjects] objectForKey:@"Contact"];
     [self.tableView reloadData];
 }
 #pragma mark - Table view data source
@@ -91,13 +103,32 @@
 	cell.imageView.image = image;
 
 	// Configure the cell to show the data.
-	Account *obj = [dataRows objectAtIndex:indexPath.row];
+	Account *obj = (Account *)[dataRows objectAtIndex:indexPath.row];
+//    NSString *value;
+//    object_getInstanceVariable(obj,[@"name" UTF8String], &value);
 	cell.textLabel.text =  obj.name;
-
+    
+    NSArray *children = [_contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"account.id = %@",obj.id]];
 	//this adds the arrow to the right hand side.
+    if (children.count) {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    } else {
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
 
 	return cell;
 
+}
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 @end

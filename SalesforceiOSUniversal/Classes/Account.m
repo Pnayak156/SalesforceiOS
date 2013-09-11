@@ -2,22 +2,19 @@
 //  Account.m
 //  SalesforceiOSUniversal
 //
-//  Created by Prashant Kumar Nayak on 10/09/13.
+//  Created by Prashant Kumar Nayak on 11/09/13.
 //  Copyright (c) 2013 PKN. All rights reserved.
 //
 
 #import "Account.h"
-#import "Contact.h"
-
 
 @implementation Account
-
-@synthesize  idL;
+@synthesize id;
 @synthesize name;
 @synthesize lastModifiedDate;
 @synthesize phone;
 @synthesize industry;
 @synthesize accountNumber;
 @synthesize syncFlag;
-//@synthesize contact;
+@synthesize contact;
 @end

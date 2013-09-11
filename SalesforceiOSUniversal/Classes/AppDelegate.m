@@ -29,6 +29,7 @@
 #import "SFAuthenticationManager.h"
 #import "SFOAuthInfo.h"
 #import "SFLogger.h"
+#import "ContactViewController.h"
 
 // Fill these in when creating a new Connected Application on Force.com
 static NSString * const RemoteAccessConsumerKey = @"3MVG9Y6d_Btp4xp63QM9B57g2lgRWV2gsBpHFAu1CXNxwttJTyXYvoPzFl_vBYA3765vbNLoM5FlHQZq5o8Jc";
@@ -45,6 +46,7 @@ static NSString * const OAuthRedirectURI        = @"mysampleapp://auth/success";
  * Failure block to calls if authentication fails.
  */
 @property (nonatomic, copy) SFOAuthFlowFailureCallbackBlock initialLoginFailureBlock;
+@property (nonatomic, strong) UITabBarController *tabBarController;
 
 /**
  * Handles the notification from SFAuthenticationManager that a logout has been initiated.
@@ -128,9 +130,15 @@ static NSString * const OAuthRedirectURI        = @"mysampleapp://auth/success";
 
 - (void)setupRootViewController
 {
-    RootViewController *rootVC = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    self.window.rootViewController = navVC;
+    UIStoryboard *storyBord = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    self.tabBarController = [storyBord instantiateViewControllerWithIdentifier:@"TabBarControllerIdentifier"];
+//    UINavigationController *navViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+//    RootViewController *rootVC = [navViewController.viewControllers lastObject];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:[[[[self.tabBarController viewControllers] objectAtIndex:0] viewControllers] lastObject] selector:@selector(dataReceived:) name:@"DATA_RECEIVED_NOTIFICATION" object:[[[self.tabBarController.viewControllers objectAtIndex:0] viewControllers] lastObject]];
+    [[NSNotificationCenter defaultCenter] addObserver:[[[[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] lastObject] selector:@selector(dataReceived:) name:@"DATA_RECEIVED_NOTIFICATION" object:nil];
+//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    self.window.rootViewController = self.tabBarController;
 }
 
 - (void)logoutInitiated:(NSNotification *)notification

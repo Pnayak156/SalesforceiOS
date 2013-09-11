@@ -66,7 +66,10 @@
 		BD08D4F217DE21CB008FE15E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BD08D4E817DE21CB008FE15E /* Reachability.m */; };
 		BD08D4F417DE285C008FE15E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD08D4F317DE285C008FE15E /* ImageIO.framework */; };
 		BD08D4F917DE4D7F008FE15E /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = BD08D4F817DE4D7E008FE15E /* Contact.m */; };
-		BD08D4FC17DE4D82008FE15E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = BD08D4FB17DE4D81008FE15E /* Account.m */; };
+		BD38D6FF17DFADDA00127AC3 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38D6FE17DFADDA00127AC3 /* Account.m */; };
+		BD38D70517DFBC6300127AC3 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38D70417DFBC6300127AC3 /* ContactViewController.m */; };
+		BD38D70817DFBE0D00127AC3 /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38D70717DFBE0D00127AC3 /* AccountDetailViewController.m */; };
+		BD38D70B17DFBE1C00127AC3 /* ContactDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD38D70A17DFBE1C00127AC3 /* ContactDetalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -297,8 +300,14 @@
 		BD08D4F317DE285C008FE15E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		BD08D4F717DE4D7E008FE15E /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = ../Contact.h; sourceTree = "<group>"; };
 		BD08D4F817DE4D7E008FE15E /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = ../Contact.m; sourceTree = "<group>"; };
-		BD08D4FA17DE4D80008FE15E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = ../Account.h; sourceTree = "<group>"; };
-		BD08D4FB17DE4D81008FE15E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = ../Account.m; sourceTree = "<group>"; };
+		BD38D6FD17DFADDA00127AC3 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		BD38D6FE17DFADDA00127AC3 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		BD38D70317DFBC6300127AC3 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		BD38D70417DFBC6300127AC3 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		BD38D70617DFBE0D00127AC3 /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDetailViewController.h; sourceTree = "<group>"; };
+		BD38D70717DFBE0D00127AC3 /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountDetailViewController.m; sourceTree = "<group>"; };
+		BD38D70917DFBE1C00127AC3 /* ContactDetalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetalViewController.h; sourceTree = "<group>"; };
+		BD38D70A17DFBE1C00127AC3 /* ContactDetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,11 +755,11 @@
 		BD08D4A817DDA23D008FE15E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BD08D4FA17DE4D80008FE15E /* Account.h */,
-				BD08D4FB17DE4D81008FE15E /* Account.m */,
 				BD08D4F717DE4D7E008FE15E /* Contact.h */,
 				BD08D4F817DE4D7E008FE15E /* Contact.m */,
 				BD08D4C217DDAB8F008FE15E /* SyncObject */,
+				BD38D6FD17DFADDA00127AC3 /* Account.h */,
+				BD38D6FE17DFADDA00127AC3 /* Account.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -769,6 +778,12 @@
 				824A9E381724E58200C9BD79 /* InitialViewController.m */,
 				824A9E341724E45000C9BD79 /* RootViewController.h */,
 				824A9E351724E45100C9BD79 /* RootViewController.m */,
+				BD38D70317DFBC6300127AC3 /* ContactViewController.h */,
+				BD38D70417DFBC6300127AC3 /* ContactViewController.m */,
+				BD38D70617DFBE0D00127AC3 /* AccountDetailViewController.h */,
+				BD38D70717DFBE0D00127AC3 /* AccountDetailViewController.m */,
+				BD38D70917DFBE1C00127AC3 /* ContactDetalViewController.h */,
+				BD38D70A17DFBE1C00127AC3 /* ContactDetalViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -947,7 +962,10 @@
 				BD08D4F117DE21CB008FE15E /* MKNetworkOperation.m in Sources */,
 				BD08D4F217DE21CB008FE15E /* Reachability.m in Sources */,
 				BD08D4F917DE4D7F008FE15E /* Contact.m in Sources */,
-				BD08D4FC17DE4D82008FE15E /* Account.m in Sources */,
+				BD38D6FF17DFADDA00127AC3 /* Account.m in Sources */,
+				BD38D70517DFBC6300127AC3 /* ContactViewController.m in Sources */,
+				BD38D70817DFBE0D00127AC3 /* AccountDetailViewController.m in Sources */,
+				BD38D70B17DFBE1C00127AC3 /* ContactDetalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,7 +1008,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1015,7 +1033,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

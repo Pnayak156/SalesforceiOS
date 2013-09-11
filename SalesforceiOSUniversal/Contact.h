@@ -11,7 +11,7 @@
 
 @interface Contact : NSObject
 
-@property (nonatomic, strong) NSString * idL;
+@property (nonatomic, strong) NSString * id;
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * phone;
 @property (nonatomic, strong) NSDate * lastModifiedDate;
